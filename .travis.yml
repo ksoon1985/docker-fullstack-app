@@ -25,7 +25,7 @@ after_success:
   - docker build -t ksoon1985/docker-nginx ./nginx
 
   # 도커 허브에 로그인
-  - echo "$DOCKER-HUB-PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+  - echo "$DOCKER_HUB_PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   # 빌드 된 이미지들을 도커 허브에 push
   - docker push ksoon1985/docker-frontend
