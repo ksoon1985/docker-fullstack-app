@@ -15,7 +15,7 @@ before_install:
 
 # 실행할 스크립트(테스트 실행)
 script:
-  - docker run -e CI=true ksoon1985/react-test-app npm test
+  - docker run -e CI=true ksoon1985/react-test-app npm run test
 
 # 테스트 성공 후 할일
 after_success:
@@ -28,7 +28,7 @@ after_success:
   - echo "$DOCKER-HUB-PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
 
   # 빌드 된 이미지들을 도커 허브에 push
-  - docker push ksoon1985/docker-front
+  - docker push ksoon1985/docker-frontend
   - docker push ksoon1985/docker-backend
   - docker push ksoon1985/docker-nginx
 
