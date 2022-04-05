@@ -1,0 +1,34 @@
+# 언어(플랫폼)을 선택
+language: generic
+
+# 관리자 권한 갖기
+sudo: required
+
+# 도커 환경 구성
+services:
+  - docker
+
+# 스크립트를 실행할 수 있는 환경 구성
+# docker build -t <도커 아이디>/<어플 이름> -f <도커파일 경로> 
+before_install:
+  - docker build -t ksoon1985/react-test-app -f ./frontend/Dockerfile.dev ./frontend
+
+# 실행할 스크립트(테스트 실행)
+script:
+  - docker run -e CI=true ksoon1985/react-test-app npm test
+
+# 테스트 성공 후 할일
+after_success:
+  # 각각의 이미지를 build 
+  - docker build -t ksoon1985/docker-frontend ./frontend
+  - docker build -t ksoon1985/docker-backend ./backend
+  - docker build -t ksoon1985/docker-nginx ./nginx
+
+  # 도커 허브에 로그인
+  - echo "$DOCKER-HUB-PASSWORD" | docker login -u "$DOCKER_HUB_ID" --password-stdin
+
+  # 빌드 된 이미지들을 도커 허브에 push
+  - docker push ksoon1985/docker-front
+  - docker push ksoon1985/docker-backend
+  - docker push ksoon1985/docker-nginx
+
