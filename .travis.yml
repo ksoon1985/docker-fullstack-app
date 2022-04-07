@@ -37,7 +37,7 @@ deploy:
   edge: true 
   region: "us-east-1"
   app: "docker-fullstack-app"
-  env: "Dockerfullstackapp-env-1"
+  env: "Dockerfullstackapp-env"
   bucket_name: elasticbeanstalk-us-east-1-681085781418
   bucket_path: "docker-fullstack-app"
   on:
