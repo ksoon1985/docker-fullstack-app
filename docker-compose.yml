@@ -1,18 +1,20 @@
 version: "2.4"
 services:
   frontend:
-    image: ksoon1985/docker-frontend # 도커 허브에 저장된 이미지를 가져오기 위해 
+    image: ksoon1985/docker-frontend  
     volumes: 
       - /app/node_modules
       - ./frontend:/app
     stdin_open: true
-    mem_limit: 128m # 메모리 사이즈 명시
+    mem_limit: 128m 
+    
   
+  # 기본적으로 nginx는 80포트에서 애플리케이션을 실행
   nginx:
     restart: always
     image: ksoon1985/docker-nginx
     ports:
-      - "80:80" # 기본적으로 nginx는 80포트에서 애플리케이션을 실행
+      - "80:80" 
     mem_limit: 128m
     links:
       - frontend
@@ -25,10 +27,10 @@ services:
       - /app/node_modules
       - ./backend:/app
     mem_limit: 128m
-    environment: # AWS RDB 서비스로 생성된 DB와 애플리케이션 연결을 위한 정보들 
+    environment: 
       - MYSQL_HOST: $MYSQL_HOST
       - MYSQL_USER: $MYSQL_USER
       - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
       - MYSQL_DATABASE: $MYSQL_DATABASE
       - MYSQL_PORT: $MYSQL_PORT
-
+    # AWS RDB 서비스로 생성된 DB와 애플리케이션 연결을 위한 정보들 
