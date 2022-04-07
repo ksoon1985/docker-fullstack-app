@@ -30,7 +30,7 @@ services:
     environment: 
       - MYSQL_HOST: $MYSQL_HOST
       - MYSQL_USER: $MYSQL_USER
-      - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD
+      - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD 
       - MYSQL_DATABASE: $MYSQL_DATABASE
       - MYSQL_PORT: $MYSQL_PORT
     # AWS RDB 서비스로 생성된 DB와 애플리케이션 연결을 위한 정보들 
