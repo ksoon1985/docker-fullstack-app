@@ -1,4 +1,4 @@
-version: "2.4"
+version: "3"
 services:
   frontend:
     image: ksoon1985/docker-frontend  
@@ -8,8 +8,6 @@ services:
     stdin_open: true
     mem_limit: 128m 
     
-  
-  # 기본적으로 nginx는 80포트에서 애플리케이션을 실행
   nginx:
     restart: always
     image: ksoon1985/docker-nginx
@@ -33,4 +31,3 @@ services:
       - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD 
       - MYSQL_DATABASE: $MYSQL_DATABASE
       - MYSQL_PORT: $MYSQL_PORT
-    # AWS RDB 서비스로 생성된 DB와 애플리케이션 연결을 위한 정보들 
