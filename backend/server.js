@@ -12,14 +12,14 @@ const app = express();
 app.use(bodyParser.json());
 
 // 테이블 생성하기
-/*
+
 db.pool.query(`CREATE TABLE lists(
     id INTEGER AUTO_INCREMENT,
     value TEXT,
     PRIMARY KEY (id)
 )`,(err,results,fields)=>{
     console.log('results', results)
-})*/
+})
 
 // 5000번 포트로 서버가 시작되면
 app.listen(5000,()=>{
