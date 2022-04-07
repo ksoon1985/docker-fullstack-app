@@ -26,8 +26,9 @@ services:
       - ./backend:/app
     mem_limit: 128m
     environment: 
-      - MYSQL_HOST: docker-fullstack-mysql.crkvsoga9hbp.us-east-1.rds.amazonaws.com
-      - MYSQL_USER: root
-      - MYSQL_ROOT_PASSWORD: ksoon1985
-      - MYSQL_DATABASE: myapp
-      - MYSQL_PORT: 3306
+      - MYSQL_HOST: $MYSQL_HOST
+      - MYSQL_USER: $MYSQL_USER
+      - MYSQL_ROOT_PASSWORD: $MYSQL_ROOT_PASSWORD 
+      - MYSQL_DATABASE: $MYSQL_DATABASE
+      - MYSQL_PORT: $MYSQL_PORT
+    
